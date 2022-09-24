@@ -16,7 +16,7 @@ const registerFormFields = {
 }
 
 export const LoginPage = () => {
-    const { startLogin, errorMessage } = useAuthStore();
+    const { startLogin, errorMessage, startRegistration } = useAuthStore();
 
     const { loginEmail, loginPassword, onInputChange: onLoginInputChange } = useForm(loginFormFields);
     const { registerEmail, registerPassword, registerName, registerPassword2, onInputChange: onRegisterInputChange } = useForm(registerFormFields);
@@ -33,6 +33,7 @@ export const LoginPage = () => {
             return;
         }
         console.log({ registerName, registerEmail, registerPassword, registerPassword2 });
+        startRegistration({ email: registerEmail, password: registerPassword, name: registerName});
     }
 
     useEffect(() => {
